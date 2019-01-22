@@ -33,7 +33,7 @@ namespace Calculator
             InitializeComponent();
 
             this.actuallOption = new calcOptions();
-            this.actuallOption = calcOptions.NULL;
+            this.actuallOption = calcOptions.Null;
             this.calc = new CalculatorController();
             this.localSum = 0;
             this.holderTextBlock.Text = "";
@@ -44,13 +44,13 @@ namespace Calculator
         // update actuall choice sign
         private void actuallOptionSign()
         {
-            if (this.actuallOption == calcOptions.NULL) this.actuallChoiceSign.Text = "";
-            if (this.actuallOption == calcOptions.PLUS) this.actuallChoiceSign.Text = "+";
-            if (this.actuallOption == calcOptions.MINUS) this.actuallChoiceSign.Text = "-";
-            if (this.actuallOption == calcOptions.MULTIPLY) this.actuallChoiceSign.Text = "*";
-            if (this.actuallOption == calcOptions.DIVIDE) this.actuallChoiceSign.Text = "/";
-            if (this.actuallOption == calcOptions.POWER) this.actuallChoiceSign.Text = "x^2";
-            if (this.actuallOption == calcOptions.ELEMENT) this.actuallChoiceSign.Text = "/x";
+            if (this.actuallOption == calcOptions.Null) this.actuallChoiceSign.Text = "";
+            if (this.actuallOption == calcOptions.Add) this.actuallChoiceSign.Text = "+";
+            if (this.actuallOption == calcOptions.Subtract) this.actuallChoiceSign.Text = "-";
+            if (this.actuallOption == calcOptions.Multiply) this.actuallChoiceSign.Text = "*";
+            if (this.actuallOption == calcOptions.Divide) this.actuallChoiceSign.Text = "/";
+            if (this.actuallOption == calcOptions.Power) this.actuallChoiceSign.Text = "x^2";
+            if (this.actuallOption == calcOptions.Element) this.actuallChoiceSign.Text = "/x";
         }
 
         // convert string data to double type
@@ -99,6 +99,14 @@ namespace Calculator
             // convert sum text box from string to double type
             setLocalSum();
         }
+        // add comma
+        private void addComma()
+        {
+            if (!this.sumTextBox.Text.Contains(","))
+            {
+                this.sumTextBox.Text += ",";
+            }
+        }
 
         // replace local sum with calc controller sum
         // and then set local sum to 0
@@ -116,22 +124,22 @@ namespace Calculator
         {
             switch(actuallOption)
             {
-                case calcOptions.PLUS:
+                case calcOptions.Add:
                     calc.addValue(this.localSum);
                     break;
-                case calcOptions.MINUS:
+                case calcOptions.Subtract:
                     calc.subtractValue(this.localSum);
                     break;
-                case calcOptions.MULTIPLY:
+                case calcOptions.Multiply:
                     calc.multiplyValue(this.localSum);
                     break;
-                case calcOptions.DIVIDE:
+                case calcOptions.Divide:
                     calc.divideValue(this.localSum);
                     break;
-                case calcOptions.POWER:
+                case calcOptions.Power:
                     calc.powerValue(this.localSum);
                     break;
-                case calcOptions.ELEMENT:
+                case calcOptions.Element:
                     calc.elementValue(this.localSum);
                     break;
             }
@@ -139,9 +147,21 @@ namespace Calculator
             this.localSum = calc.returnSum();
             this.holderTextBlock.Text = "";
             this.sumTextBox.Text = calc.returnSum().ToString();
-            this.actuallOption = calcOptions.NULL;
+            this.actuallOption = calcOptions.Null;
             actuallOptionSign();
         }
+
+        // get result when you click '=' or 'enter'
+        private void getResults()
+        {
+            // count local sum with calc object sum
+            // if holder is not empty
+            if (this.holderTextBlock.Text != "") count();
+
+            startNewType = true;
+            checkData();
+        }
+
 
         // set calc option and update text box
         private void setOption(calcOptions opt)
@@ -161,10 +181,7 @@ namespace Calculator
         // comma
         private void CommaButton_Click(object sender, RoutedEventArgs e)
         {
-            if(!this.sumTextBox.Text.Contains(","))
-            {
-                this.sumTextBox.Text += ",";
-            }
+            addComma();
         }
         // inverse
         private void InverseButton_Click(object sender, RoutedEventArgs e)
@@ -179,48 +196,46 @@ namespace Calculator
         // option =
         private void EqualButton_Click(object sender, RoutedEventArgs e)
         {
-            // count local sum with calc object sum
-            // if holder is not empty
-            if (this.holderTextBlock.Text != "") count();
-            
-            startNewType = true;
-            checkData();
+            getResults();
         }
 
+        #region default options
         // option for multiply *
         private void MultiplyButton_Click(object sender, RoutedEventArgs e)
         {
-            setOption(calcOptions.MULTIPLY);
+            setOption(calcOptions.Multiply);
         }
         // option for divide /
         private void DivideButton_Click(object sender, RoutedEventArgs e)
         {
-            setOption(calcOptions.DIVIDE);
+            setOption(calcOptions.Divide);
         }
         // option for adding +
         private void PlusButton_Click(object sender, RoutedEventArgs e)
         {
-            setOption(calcOptions.PLUS);
+            setOption(calcOptions.Add);
         }
         // option for substract -
         private void MinusButton_Click(object sender, RoutedEventArgs e)
         {
-            setOption(calcOptions.MINUS);
+            setOption(calcOptions.Subtract);
         }
+        #endregion
+
         // option x^2
         // *this option works in another way
         private void PowerButton_Click(object sender, RoutedEventArgs e)
         {
             // set act. option
-            this.actuallOption = calcOptions.POWER;
+            this.actuallOption = calcOptions.Power;
             // update act. sign
             actuallOptionSign();
 
             // count
             calc.powerValue(this.localSum);
             this.localSum = calc.returnSum();
-            this.sumTextBox.Text = this.localSum.ToString();
-            this.actuallOption = calcOptions.NULL;
+            this.sumTextBox.Text = calc.returnSum().ToString();
+            this.actuallOption = calcOptions.Null;
             actuallOptionSign();
         }
         // option /x
@@ -228,7 +243,7 @@ namespace Calculator
         private void ElementButton_Click(object sender, RoutedEventArgs e)
         {
             // set act. option
-            this.actuallOption = calcOptions.ELEMENT;
+            this.actuallOption = calcOptions.Element;
             // update act. sign
             actuallOptionSign();
 
@@ -236,7 +251,7 @@ namespace Calculator
             calc.elementValue(this.localSum);
             this.localSum = calc.returnSum();
             this.sumTextBox.Text = this.localSum.ToString();
-            this.actuallOption = calcOptions.NULL;
+            this.actuallOption = calcOptions.Null;
             actuallOptionSign();
         }
         #endregion
@@ -309,6 +324,90 @@ namespace Calculator
         private void Check_Click(object sender, RoutedEventArgs e)
         {
             checkData();
+        }
+
+        // type from keyboard
+        private void CalculatorForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            // for escape (clear data)
+            if(e.Key == Key.Escape)
+            {
+                clearData();
+            }
+            // check for numbers [0-9]
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) || (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            {
+                switch(e.Key)
+                {
+                    case Key.D0:
+                    case Key.NumPad0:
+                        addNumber("0");
+                    break;
+                    case Key.D1:
+                    case Key.NumPad1:
+                        addNumber("1");
+                        break;
+                    case Key.D2:
+                    case Key.NumPad2:
+                        addNumber("2");
+                        break;
+                    case Key.D3:
+                    case Key.NumPad3:
+                        addNumber("3");
+                        break;
+                    case Key.D4:
+                    case Key.NumPad4:
+                        addNumber("4");
+                        break;
+                    case Key.D5:
+                    case Key.NumPad5:
+                        addNumber("5");
+                        break;
+                    case Key.D6:
+                    case Key.NumPad6:
+                        addNumber("6");
+                        break;
+                    case Key.D7:
+                    case Key.NumPad7:
+                        addNumber("7");
+                        break;
+                    case Key.D8:
+                    case Key.NumPad8:
+                        addNumber("8");
+                        break;
+                    case Key.D9:
+                    case Key.NumPad9:
+                        addNumber("9");
+                        break;
+                }
+            }
+            // check for comma
+            if(e.Key == Key.OemComma || e.Key == Key.Decimal)
+            {
+                addComma();
+            }
+            // check for options
+            if(e.Key == Key.Divide || e.Key == Key.OemQuestion || e.Key == Key.Multiply || e.Key == Key.Subtract || e.Key == Key.OemMinus || e.Key == Key.Add || e.Key == Key.OemMinus)
+            {
+                switch(e.Key)
+                {
+                    case Key.Divide:
+                    case Key.OemQuestion:
+                        setOption(calcOptions.Divide);
+                        break;
+                    case Key.Multiply:
+                        setOption(calcOptions.Multiply);
+                        break;
+                    case Key.Subtract:
+                    case Key.OemMinus:
+                        setOption(calcOptions.Subtract);
+                        break;
+                    case Key.Add:
+                    case Key.OemPlus:
+                        setOption(calcOptions.Add);
+                        break;
+                }
+            }
         }
     }
 }

@@ -2,13 +2,13 @@
 {
     enum calcOptions
     {
-        NULL = 0,
-        PLUS = 1,
-        MINUS = 2,
-        MULTIPLY = 3,
-        DIVIDE = 4,
-        POWER = 5,
-        ELEMENT = 6
+        Null = 0,
+        Add = 1,
+        Subtract = 2,
+        Multiply = 3,
+        Divide = 4,
+        Power = 5,
+        Element = 6
 
     };
 }
