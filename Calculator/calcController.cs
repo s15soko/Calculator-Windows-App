@@ -16,12 +16,7 @@ namespace Calculator
             this.sum = 0.0f;
         }
 
-        // inverse value
-        public void inverseSum()
-        {
-            if(this.sum != 0)
-                this.sum = -this.sum;
-        }
+
         // +
         public void addValue(double value)
         {

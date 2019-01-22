@@ -5,38 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="Calculator" Height="450" Width="300" ResizeMode="NoResize" KeyDown="CalculatorForm_KeyDown">
+        Title="Calculator" Height="450" Width="257" ResizeMode="NoResize" KeyDown="CalculatorForm_KeyDown" WindowStyle="ThreeDBorderWindow">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="88*"/>
             <RowDefinition Height="333*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="buttonsGrid" HorizontalAlignment="Left" Height="334" Margin="0,87,0,0" VerticalAlignment="Top" Width="294" Grid.RowSpan="2">
-            <Button x:Name="inverseButton" Content="inverse" HorizontalAlignment="Left" Margin="6,274,0,0" VerticalAlignment="Top" Width="65" Height="50" BorderThickness="0" Click="InverseButton_Click"/>
-            <Button x:Name="btn_nZero" Content="0" HorizontalAlignment="Left" Margin="76,274,0,0" VerticalAlignment="Top" Width="64" BorderThickness="0" Height="50" Click="Btn_nZero_Click"/>
-            <Button x:Name="commaButton" Content="," HorizontalAlignment="Left" Margin="145,274,0,0" VerticalAlignment="Top" Width="60" Height="51" BorderThickness="0" Click="CommaButton_Click"/>
-            <Button x:Name="equalButton" Content="=" HorizontalAlignment="Left" Margin="214,289,0,0" VerticalAlignment="Top" Width="74" Height="35" BorderThickness="0" Click="EqualButton_Click"/>
-            <Button x:Name="btn_nTwo" Content="2" HorizontalAlignment="Left" Margin="76,218,0,0" VerticalAlignment="Top" Width="64" BorderThickness="0" Height="50" Click="Btn_nTwo_Click"/>
-            <Button x:Name="btn_zOne" Content="1" HorizontalAlignment="Left" Margin="6,218,0,0" VerticalAlignment="Top" Width="65" BorderThickness="0" Height="50" Click="Btn_zOne_Click"/>
-            <Button x:Name="btn_nThree" Content="3" HorizontalAlignment="Left" Margin="145,218,0,0" VerticalAlignment="Top" Width="60" BorderThickness="0" Height="50" Click="Btn_nThree_Click"/>
-            <Button x:Name="btn_nFour" Content="4" HorizontalAlignment="Left" Margin="6,162,0,0" VerticalAlignment="Top" Width="65" BorderThickness="0" Height="50" Click="Btn_nFour_Click"/>
-            <Button x:Name="btn_nFive" Content="5" HorizontalAlignment="Left" Margin="76,162,0,0" VerticalAlignment="Top" Width="64" BorderThickness="0" Height="50" Click="Btn_nFive_Click"/>
-            <Button x:Name="btn_nSix" Content="6" HorizontalAlignment="Left" Margin="145,162,0,0" VerticalAlignment="Top" Width="60" BorderThickness="0" Height="50" Click="Btn_nSix_Click"/>
-            <Button x:Name="plusButton" Content="+" HorizontalAlignment="Left" Margin="214,249,0,0" VerticalAlignment="Top" Width="74" BorderThickness="0" Height="35" Click="PlusButton_Click"/>
-            <Button x:Name="minusButton" Content="-" HorizontalAlignment="Left" Margin="214,209,0,0" VerticalAlignment="Top" Width="74" BorderThickness="0" Height="35" Click="MinusButton_Click"/>
-            <Button x:Name="btn_nSeven" Content="7" HorizontalAlignment="Left" Margin="6,106,0,0" VerticalAlignment="Top" Width="65" BorderThickness="0" Height="50" Click="Btn_nSeven_Click"/>
-            <Button x:Name="btn_nEight" Content="8" HorizontalAlignment="Left" Margin="76,106,0,0" VerticalAlignment="Top" Width="64" BorderThickness="0" Height="50" Click="Btn_nEight_Click"/>
-            <Button x:Name="btn_nNine" Content="9" HorizontalAlignment="Left" Margin="145,106,0,0" VerticalAlignment="Top" Width="60" BorderThickness="0" Height="50" Click="Btn_nNine_Click"/>
-            <Button x:Name="clearButton" Content="CE" HorizontalAlignment="Left" Margin="6,51,0,0" VerticalAlignment="Top" Width="65" Padding="0" Height="50" BorderThickness="0" Click="ClearButton_Click"/>
-            <Button x:Name="multiplyButton" Content="*" HorizontalAlignment="Left" Margin="214,169,0,0" VerticalAlignment="Top" Width="74" BorderThickness="0" Height="35" Click="MultiplyButton_Click"/>
-            <Button x:Name="divideButton" Content="/" HorizontalAlignment="Left" Margin="214,129,0,0" VerticalAlignment="Top" Width="74" BorderThickness="0" Height="35" Click="DivideButton_Click"/>
-            <Button x:Name="powerButton" Content="x^2" HorizontalAlignment="Left" Margin="145,51,0,0" VerticalAlignment="Top" Width="60" BorderThickness="0" SnapsToDevicePixels="True" Height="50" Click="PowerButton_Click"/>
-            <Button x:Name="elementButton" Content="/x" HorizontalAlignment="Left" Margin="76,51,0,0" VerticalAlignment="Top" Width="64" BorderThickness="0" Height="50" Click="ElementButton_Click"/>
-            <Button x:Name="check" Content="check" HorizontalAlignment="Left" Margin="214,10,0,0" VerticalAlignment="Top" Width="75" Click="Check_Click"/>
+        <Grid x:Name="buttonsGrid" HorizontalAlignment="Left" Height="289" Margin="-5,44,0,0" VerticalAlignment="Top" Width="256" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="inverseButton" Content="inverse" HorizontalAlignment="Left" Margin="15,228,0,0" VerticalAlignment="Top" Width="50" Height="50" BorderThickness="0" Click="InverseButton_Click"/>
+            <Button x:Name="btn_nZero" Content="0" HorizontalAlignment="Left" Margin="70,228,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nZero_Click"/>
+            <Button x:Name="commaButton" Content="," HorizontalAlignment="Left" Margin="125,229,0,0" VerticalAlignment="Top" Width="50" Height="50" BorderThickness="0" Click="CommaButton_Click"/>
+            <Button x:Name="equalButton" Content="=" HorizontalAlignment="Left" Margin="180,241,0,0" VerticalAlignment="Top" Width="66" Height="38" BorderThickness="0" Click="EqualButton_Click"/>
+            <Button x:Name="btn_nTwo" Content="2" HorizontalAlignment="Left" Margin="70,173,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nTwo_Click"/>
+            <Button x:Name="btn_nOne" Content="1" HorizontalAlignment="Left" Margin="15,172,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_zOne_Click"/>
+            <Button x:Name="btn_nThree" Content="3" HorizontalAlignment="Left" Margin="125,174,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nThree_Click"/>
+            <Button x:Name="btn_nFour" Content="4" HorizontalAlignment="Left" Margin="15,117,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nFour_Click"/>
+            <Button x:Name="btn_nFive" Content="5" HorizontalAlignment="Left" Margin="70,117,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nFive_Click"/>
+            <Button x:Name="btn_nSix" Content="6" HorizontalAlignment="Left" Margin="125,117,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nSix_Click"/>
+            <Button x:Name="plusButton" Content="+" HorizontalAlignment="Left" Margin="180,196,0,0" VerticalAlignment="Top" Width="66" BorderThickness="0" Height="40" Click="PlusButton_Click"/>
+            <Button x:Name="minusButton" Content="-" HorizontalAlignment="Left" Margin="180,151,0,0" VerticalAlignment="Top" Width="66" BorderThickness="0" Height="40" Click="MinusButton_Click"/>
+            <Button x:Name="btn_nSeven" Content="7" HorizontalAlignment="Left" Margin="15,62,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nSeven_Click"/>
+            <Button x:Name="btn_nEight" Content="8" HorizontalAlignment="Left" Margin="70,62,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nEight_Click"/>
+            <Button x:Name="btn_nNine" Content="9" HorizontalAlignment="Left" Margin="125,62,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="Btn_nNine_Click"/>
+            <Button x:Name="clearButton" Content="CE" HorizontalAlignment="Left" Margin="15,6,0,0" VerticalAlignment="Top" Width="50" Padding="0" Height="50" BorderThickness="0" Click="ClearButton_Click"/>
+            <Button x:Name="multiplyButton" Content="*" HorizontalAlignment="Left" Margin="180,106,0,0" VerticalAlignment="Top" Width="66" BorderThickness="0" Height="40" Click="MultiplyButton_Click"/>
+            <Button x:Name="divideButton" Content="/" HorizontalAlignment="Left" Margin="180,61,0,0" VerticalAlignment="Top" Width="66" BorderThickness="0" Height="40" Click="DivideButton_Click"/>
+            <Button x:Name="powerButton" Content="x^2" HorizontalAlignment="Left" Margin="125,6,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" SnapsToDevicePixels="True" Height="50" Click="PowerButton_Click"/>
+            <Button x:Name="elementButton" Content="/x" HorizontalAlignment="Left" Margin="70,6,0,0" VerticalAlignment="Top" Width="50" BorderThickness="0" Height="50" Click="ElementButton_Click"/>
+            <Button x:Name="check" Content="check" HorizontalAlignment="Left" Margin="180,-30,0,0" VerticalAlignment="Top" Width="66" Click="Check_Click"/>
+            <Button x:Name="deleteButton" Content="delete" HorizontalAlignment="Left" Margin="180,6,0,0" VerticalAlignment="Top" Width="66" BorderThickness="0" Height="50" Click="DeleteButton_Click"/>
         </Grid>
-        <TextBlock x:Name="holderTextBlock" HorizontalAlignment="Left" Margin="10,15,0,0" TextWrapping="Wrap" Text="holder" VerticalAlignment="Top" Height="28" Width="235" FontSize="15"/>
-        <TextBlock x:Name="actuallChoiceSign" HorizontalAlignment="Right" Margin="0,48,10,0" TextWrapping="Wrap" Text="+" VerticalAlignment="Top" Height="34" Width="34" FontSize="20"/>
-        <TextBox x:Name="sumTextBox" IsReadOnly="True" HorizontalAlignment="Left" Height="27" Margin="10,55,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="235" FontSize="18" BorderThickness="0" MaxLines="1" MaxLength="15"/>
+        <TextBlock x:Name="holderTextBlock" HorizontalAlignment="Right" Margin="0,28,44,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="197" FontSize="15"><Run FontSize="14" Text="ho"/><Run FontSize="14" Text="lder"/></TextBlock>
+        <TextBlock x:Name="actuallChoiceSign" HorizontalAlignment="Right" Margin="0,23,10,0" TextWrapping="Wrap" Text="+" VerticalAlignment="Top" Height="34" Width="29" FontSize="20"/>
+        <TextBox x:Name="sumTextBox" IsReadOnly="True" HorizontalAlignment="Left" Height="27" Margin="8,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="233" FontSize="18" BorderThickness="0" MaxLines="1" MaxLength="15"/>
 
     </Grid>
 </Window>

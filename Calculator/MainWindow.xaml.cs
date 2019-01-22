@@ -25,6 +25,7 @@ namespace Calculator
         calcOptions actuallOption;
         double localSum;
         bool startNewType;
+        
 
         // main window
         // constructor
@@ -32,7 +33,18 @@ namespace Calculator
         {
             InitializeComponent();
 
-            
+            // don't focus on these elements
+            this.btn_nNine.Focusable = false;
+            this.btn_nEight.Focusable = false;
+            this.btn_nSeven.Focusable = false;
+            this.btn_nSix.Focusable = false;
+            this.btn_nFive.Focusable = false;
+            this.btn_nFour.Focusable = false;
+            this.btn_nThree.Focusable = false;
+            this.btn_nTwo.Focusable = false;
+            this.btn_nOne.Focusable = false;
+
+
             this.actuallOption = new calcOptions();
             this.actuallOption = calcOptions.Null;
             this.calc = new CalculatorController();
@@ -100,6 +112,7 @@ namespace Calculator
             // convert sum text box from string to double type
             setLocalSum();
         }
+
         // add comma
         private void addComma()
         {
@@ -164,7 +177,6 @@ namespace Calculator
             checkData();
         }
 
-
         // set calc option and update text box
         private void setOption(calcOptions opt)
         {
@@ -180,6 +192,22 @@ namespace Calculator
         }
 
         #region option buttons
+        // delete last one number in local sum
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(this.sumTextBox.Text.Length == 1)
+            {
+                this.sumTextBox.Text = "0";
+            }
+            else
+            {
+                this.sumTextBox.Text = this.sumTextBox.Text.Remove(this.sumTextBox.Text.Length - 1);
+            }
+            
+            // set local sum
+            // convert sum text box from string to double type
+            setLocalSum();
+        }
         // comma
         private void CommaButton_Click(object sender, RoutedEventArgs e)
         {
@@ -188,7 +216,12 @@ namespace Calculator
         // inverse
         private void InverseButton_Click(object sender, RoutedEventArgs e)
         {
-            calc.inverseSum();
+            if (this.localSum != 0)
+            {
+                this.localSum = -this.localSum;
+                this.sumTextBox.Text = this.localSum.ToString();
+            }
+                
         }
         // clear
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -224,7 +257,7 @@ namespace Calculator
             setOption(calcOptions.Subtract);
         }
         #endregion
-
+        #region other options
         // option x^2
         // *this option works in another way
         private void PowerButton_Click(object sender, RoutedEventArgs e)
@@ -257,6 +290,7 @@ namespace Calculator
             this.holderTextBlock.Text = "";
             this.actuallOption = calcOptions.Null;
         }
+        #endregion
         #endregion
 
         #region buttons [0-9]
@@ -415,7 +449,8 @@ namespace Calculator
             {
                 getResults();
             }
-
         }
+
+        
     }
 }
