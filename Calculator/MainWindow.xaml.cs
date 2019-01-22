@@ -231,7 +231,6 @@ namespace Calculator
         // option =
         private void EqualButton_Click(object sender, RoutedEventArgs e)
         {
-
             getResults();
         }
 
@@ -348,6 +347,7 @@ namespace Calculator
         #endregion
 
 
+        // check data (for console)
         private void checkData()
         {
             Console.WriteLine("===================");
@@ -356,10 +356,7 @@ namespace Calculator
             Console.WriteLine("Local sum: " + this.localSum);
             calc.showSum();
         }
-        private void Check_Click(object sender, RoutedEventArgs e)
-        {
-            checkData();
-        }
+
 
         // type from keyboard
         private void CalculatorForm_KeyDown(object sender, KeyEventArgs e)
