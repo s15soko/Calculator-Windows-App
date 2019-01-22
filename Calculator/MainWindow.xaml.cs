@@ -32,6 +32,7 @@ namespace Calculator
         {
             InitializeComponent();
 
+            
             this.actuallOption = new calcOptions();
             this.actuallOption = calcOptions.Null;
             this.calc = new CalculatorController();
@@ -159,6 +160,7 @@ namespace Calculator
             if (this.holderTextBlock.Text != "") count();
 
             startNewType = true;
+            actuallOptionSign();
             checkData();
         }
 
@@ -196,6 +198,7 @@ namespace Calculator
         // option =
         private void EqualButton_Click(object sender, RoutedEventArgs e)
         {
+
             getResults();
         }
 
@@ -235,8 +238,8 @@ namespace Calculator
             calc.powerValue(this.localSum);
             this.localSum = calc.returnSum();
             this.sumTextBox.Text = calc.returnSum().ToString();
-            this.actuallOption = calcOptions.Null;
-            actuallOptionSign();
+            this.holderTextBlock.Text = "";
+            this.actuallOption = calcOptions.Null; 
         }
         // option /x
         // *this option works in another way
@@ -251,8 +254,8 @@ namespace Calculator
             calc.elementValue(this.localSum);
             this.localSum = calc.returnSum();
             this.sumTextBox.Text = this.localSum.ToString();
+            this.holderTextBlock.Text = "";
             this.actuallOption = calcOptions.Null;
-            actuallOptionSign();
         }
         #endregion
 
@@ -309,8 +312,6 @@ namespace Calculator
         }
 
         #endregion
-
-
 
 
         private void checkData()
@@ -387,7 +388,8 @@ namespace Calculator
                 addComma();
             }
             // check for options
-            if(e.Key == Key.Divide || e.Key == Key.OemQuestion || e.Key == Key.Multiply || e.Key == Key.Subtract || e.Key == Key.OemMinus || e.Key == Key.Add || e.Key == Key.OemMinus)
+            if(e.Key == Key.Divide || e.Key == Key.OemQuestion || e.Key == Key.Multiply 
+                || e.Key == Key.Subtract || e.Key == Key.OemMinus || e.Key == Key.Add || e.Key == Key.OemPlus)
             {
                 switch(e.Key)
                 {
@@ -408,6 +410,12 @@ namespace Calculator
                         break;
                 }
             }
+            // check for enter
+            if(e.Key == Key.Return)
+            {
+                getResults();
+            }
+
         }
     }
 }
