@@ -50,7 +50,7 @@ namespace Calculator
         // /x
         public void elementValue(double value)
         {
-            
+            this.sum = Math.Sqrt(value);
         }
 
 

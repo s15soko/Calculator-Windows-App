@@ -27,6 +27,7 @@ namespace Calculator
         bool startNewType;
 
         // main window
+        // constructor
         public MainWindow()
         {
             InitializeComponent();
@@ -48,6 +49,8 @@ namespace Calculator
             if (this.actuallOption == calcOptions.MINUS) this.actuallChoiceSign.Text = "-";
             if (this.actuallOption == calcOptions.MULTIPLY) this.actuallChoiceSign.Text = "*";
             if (this.actuallOption == calcOptions.DIVIDE) this.actuallChoiceSign.Text = "/";
+            if (this.actuallOption == calcOptions.POWER) this.actuallChoiceSign.Text = "x^2";
+            if (this.actuallOption == calcOptions.ELEMENT) this.actuallChoiceSign.Text = "/x";
         }
 
         // convert string data to double type
@@ -108,6 +111,7 @@ namespace Calculator
             this.sumTextBox.Text = "0";
         }
 
+        // count 
         private void count()
         {
             switch(actuallOption)
@@ -139,6 +143,19 @@ namespace Calculator
             actuallOptionSign();
         }
 
+        // set calc option and update text box
+        private void setOption(calcOptions opt)
+        {
+            // save local value
+            startNewType = false;
+
+            // replace local sum with calc object sum
+            // for input new value...
+            if (this.holderTextBlock.Text == "") replace();
+            this.actuallOption = opt;
+            // update act. sign
+            actuallOptionSign();
+        }
 
         #region option buttons
         // comma
@@ -162,52 +179,65 @@ namespace Calculator
         // option =
         private void EqualButton_Click(object sender, RoutedEventArgs e)
         {
+            // count local sum with calc object sum
+            // if holder is not empty
             if (this.holderTextBlock.Text != "") count();
+            
             startNewType = true;
-            checkkkk();
-
+            checkData();
         }
 
-        // set calc option and update text box
-        private void setOption(calcOptions opt)
-        {
-            // replace local sum with calc object sum
-            // for input new value...
-            startNewType = false;
-            if (this.holderTextBlock.Text == "") replace();
-            this.actuallOption = opt;
-            actuallOptionSign();
-        }
-
-        // option *
+        // option for multiply *
         private void MultiplyButton_Click(object sender, RoutedEventArgs e)
         {
             setOption(calcOptions.MULTIPLY);
         }
-        // option /
+        // option for divide /
         private void DivideButton_Click(object sender, RoutedEventArgs e)
         {
             setOption(calcOptions.DIVIDE);
         }
-        // option +
+        // option for adding +
         private void PlusButton_Click(object sender, RoutedEventArgs e)
         {
             setOption(calcOptions.PLUS);
         }
-        // option -
+        // option for substract -
         private void MinusButton_Click(object sender, RoutedEventArgs e)
         {
             setOption(calcOptions.MINUS);
         }
         // option x^2
+        // *this option works in another way
         private void PowerButton_Click(object sender, RoutedEventArgs e)
         {
+            // set act. option
+            this.actuallOption = calcOptions.POWER;
+            // update act. sign
+            actuallOptionSign();
 
+            // count
+            calc.powerValue(this.localSum);
+            this.localSum = calc.returnSum();
+            this.sumTextBox.Text = this.localSum.ToString();
+            this.actuallOption = calcOptions.NULL;
+            actuallOptionSign();
         }
         // option /x
+        // *this option works in another way
         private void ElementButton_Click(object sender, RoutedEventArgs e)
         {
+            // set act. option
+            this.actuallOption = calcOptions.ELEMENT;
+            // update act. sign
+            actuallOptionSign();
 
+            // count
+            calc.elementValue(this.localSum);
+            this.localSum = calc.returnSum();
+            this.sumTextBox.Text = this.localSum.ToString();
+            this.actuallOption = calcOptions.NULL;
+            actuallOptionSign();
         }
         #endregion
 
@@ -266,7 +296,9 @@ namespace Calculator
         #endregion
 
 
-        private void checkkkk()
+
+
+        private void checkData()
         {
             Console.WriteLine("===================");
             Console.WriteLine("holderTextBlock: " + this.holderTextBlock.Text);
@@ -274,10 +306,9 @@ namespace Calculator
             Console.WriteLine("Local sum: " + this.localSum);
             calc.showSum();
         }
-
         private void Check_Click(object sender, RoutedEventArgs e)
         {
-            checkkkk();
+            checkData();
         }
     }
 }
